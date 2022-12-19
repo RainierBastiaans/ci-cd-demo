@@ -14,7 +14,7 @@
         <jsp:param name="actual" value="Home"/>
     </jsp:include>
         <main>
-        <h2>Mijn liefste huisdieren</h2>
+        <h2>Mijn liefste huisdieren zijn lelijk</h2>
         <p>Maak kennis met mijn liefste huisdieren. Hoe heten ze, hoeveel
             eten ze, ... Ik noteer het hier allemaal.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
