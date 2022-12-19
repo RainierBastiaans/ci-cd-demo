@@ -12,7 +12,7 @@ public class WikipediaSimpleTest {
     @Test
     public void test_Wikipedia_with_KHL_results () {
         WebDriver driver = DriverHelper.getDriver();
-        driver.get("http://en.wikipedia.org/wiki/Main_Page");
+        driver.get("https://en.wikipedia.org/wiki/Main_Page");
 
         WebElement searchField = driver.findElement(By.id("searchInput"));
         searchField.clear();
