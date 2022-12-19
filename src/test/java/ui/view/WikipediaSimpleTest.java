@@ -3,46 +3,31 @@ package ui.view;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WikipediaSimpleTest {
 
-    private WebDriver driver;
+    @Test
+    public void test_Wikipedia_with_KHL_results () {
+        WebDriver driver = DriverHelper.getDriver();
+        driver.get("http://en.wikipedia.org/wiki/Main_Page");
 
-    @Before
-    public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://nl.wikipedia.org/wiki/Hoofdpagina");
-    }
+        WebElement searchField = driver.findElement(By.id("searchInput"));
+        searchField.clear();
+        searchField.sendKeys("KHL");
 
+        WebElement goButton = driver.findElement(By.id("searchButton"));
+        goButton.click();
 
-    @After
-    public void clean(){
+        String h2Text = driver.findElement(By.id("firstHeading")).getText();
+        assertEquals("Kontinental Hockey League",h2Text);
+
+        String captionText = driver.findElement(By.cssSelector("caption")).getText();
+        assertEquals("Kontinental Hockey League", captionText);
+
         driver.quit();
-    }
-
-    @Test
-    public void browserVindtWikipedia() {
-        assertEquals("Wikipedia, de vrije encyclopedie", driver.getTitle());
-    }
-
-    @Test
-    public void wikipediaVindtSelenium() {
-        WebElement field = driver.findElement(By.id("searchInput"));
-        field.clear();
-        field.sendKeys("selenium");
-        WebElement link = driver.findElement(By.id("searchButton"));
-        link.click();
-
-        assertEquals("Selenium - Wikipedia", driver.getTitle());
-
-        assertEquals("Selenium", driver.findElement(By.tagName("h1")).getText());
     }
 
 }

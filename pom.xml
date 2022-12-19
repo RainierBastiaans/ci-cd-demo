@@ -38,12 +38,12 @@
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
+            <artifactId>selenium-java</artifactId>
             <version>4.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
+            <artifactId>selenium-api</artifactId>
             <version>4.7.1</version>
         </dependency>
         <dependency>
@@ -56,6 +56,11 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.0</version>
         </dependency>
     </dependencies>
 
