@@ -2,7 +2,7 @@ FROM maven:3 as builder
 WORKDIR .
 COPY . .
 RUN chmod +x ./scripts/InstallChrome.sh
-RUN ./scripts/InstallChrome.sh
+./scripts/InstallChrome.sh
 RUN google-chrome --version
 RUN mvn -f ./pom.xml clean package
 
