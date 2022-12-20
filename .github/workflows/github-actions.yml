@@ -26,7 +26,7 @@ jobs:
           chmod +x ./scripts/InstallChrome.sh
           ./scripts/InstallChrome.sh
       - name: start Chrome
-        run: google-chrome --version export DISPLAY
+        run: google-chrome --version
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
@@ -40,6 +40,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Install Google chrome
+        run: |
+          chmod +x ./scripts/InstallChrome.sh
+          ./scripts/InstallChrome.sh
+      - name: start Chrome
+        run: google-chrome --version
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build and push
