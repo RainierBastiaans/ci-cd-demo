@@ -56,7 +56,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-demo
   release:
-    if: github.ref == 'refs/heads/main' && github.event == 'push'
+    if: github.ref == 'refs/heads/main' 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
