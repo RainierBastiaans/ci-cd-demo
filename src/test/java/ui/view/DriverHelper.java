@@ -13,7 +13,7 @@ public class DriverHelper {
 
     public static WebDriver getDriver(){
         WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver_win32(1)\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox"); // Bypass OS security model
         options.addArguments("--headless");
