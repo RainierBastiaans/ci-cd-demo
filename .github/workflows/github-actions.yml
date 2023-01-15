@@ -42,12 +42,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Install Google chrome
-        run: |
-          chmod +x ./scripts/InstallChrome.sh
-          ./scripts/InstallChrome.sh
-      - name: start Chrome
-        run: google-chrome --version
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
@@ -59,22 +53,15 @@ jobs:
         run: curl -X POST https://localhost:9443/api/webhooks/c78eacca-2752-48fd-a3ab-2a8ff3ee8f79
 
   release:
-    if: github.ref == 'refs/heads/main' && github.event == 'push'
+    if: github.ref == 'refs/heads/main' 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: | 
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
           prerelease: false
+          title: "CICD Dev and Build"
