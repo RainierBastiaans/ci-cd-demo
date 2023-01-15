@@ -50,7 +50,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-demo
       - name: deploy
-        run: timeout 1m curl -X POST https://${{ secrets.IP }}:9443/api/webhooks/c78eacca-2752-48fd-a3ab-2a8ff3ee8f79 &>/tmp/postlog.txt
+        run: curl -X POST https://${{ secrets.IP }}:9443/api/webhooks/c78eacca-2752-48fd-a3ab-2a8ff3ee8f79 &>/tmp/postlog.txt
       - name: e-mail on fail
         if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v3
@@ -64,7 +64,7 @@ jobs:
           #  * smtp+starttls://user:password@server:port
           # connection_url: ${{secrets.MAIL_CONNECTION}}
           # Required mail server address if not connection_url:
-          server_address: student.ucll.be
+          server_address: ucll.be
           # Server port, default 25:
           # server_port: 465
           # Optional whether this connection use TLS (default is true if server_port is 465)
@@ -76,7 +76,7 @@ jobs:
           # Required mail subject:
           subject: CI-CD-Demo Github Actions Deployment failure
           # Required recipients' addresses:
-          to: obiwan@example.com,yoda@example.com
+          to: rainier.bastiaans@student.ucll.be
           # Required sender full name (address can be skipped):
           from: Rainier Bastiaans # <user@example.com>
           # Optional plain body:
