@@ -50,7 +50,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-demo
       - name: deploy
-        run: curl -X POST https://${{ secrets.IP }}:9443/api/webhooks/c78eacca-2752-48fd-a3ab-2a8ff3ee8f79 2>&1 /tmp/postlog.txt
+        run: curl -X POST https://${{ secrets.IP }}:9443/api/webhooks/c78eacca-2752-48fd-a3ab-2a8ff3ee8f79 2>&1 /tmp/postlog.txt || true
       - name: e-mail on fail
         if: ${{ failure() }}
         uses: dawidd6/action-send-mail@v3
@@ -64,7 +64,7 @@ jobs:
           #  * smtp+starttls://user:password@server:port
           # connection_url: ${{secrets.MAIL_CONNECTION}}
           # Required mail server address if not connection_url:
-          server_address: student.ucll.be
+          server_address: ucll.be
           # Server port, default 25:
           # server_port: 465
           # Optional whether this connection use TLS (default is true if server_port is 465)
